@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleContactEntry", "SimpleContactEntry\SimpleContactEntry.csproj", "{20E6CF32-78DB-4CC2-ACBD-C69DB7D5A7E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20E6CF32-78DB-4CC2-ACBD-C69DB7D5A7E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20E6CF32-78DB-4CC2-ACBD-C69DB7D5A7E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20E6CF32-78DB-4CC2-ACBD-C69DB7D5A7E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20E6CF32-78DB-4CC2-ACBD-C69DB7D5A7E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A1D0733-A102-4165-8C8A-724B2201E8AB}
+	EndGlobalSection
+EndGlobal
