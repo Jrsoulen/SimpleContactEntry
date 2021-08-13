@@ -15,6 +15,6 @@ namespace SimpleContactEntry
         public string State { get; set; }
 
         [JsonPropertyName("zip")]
-        public string ZipCode { get; set; }
+        public string Zip { get; set; }
     }
 }
