@@ -1,20 +1,21 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace SimpleContactEntry
 {
     public class Address
     {
 
-        [JsonPropertyName("street")]
+        [JsonProperty("street")]
         public string Street { get; set; }
 
-        [JsonPropertyName("city")]
+        [JsonProperty("city")]
         public string City { get; set; }
 
-        [JsonPropertyName("state")]
+        [JsonProperty("state")]
         public string State { get; set; }
 
-        [JsonPropertyName("zip")]
+        [JsonProperty("zip")]
         public string Zip { get; set; }
     }
 }

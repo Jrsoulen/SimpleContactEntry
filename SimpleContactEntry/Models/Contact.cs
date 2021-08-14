@@ -1,22 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace SimpleContactEntry
 {
     public class Contact
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
-        [JsonPropertyName("name")]
+        [JsonProperty("name")]
         public Name Name { get; set; }
 
-        [JsonPropertyName("address")]
+        [JsonProperty("address")]
         public Address Address { get; set; }
 
-        [JsonPropertyName("phone")]
+        [JsonProperty("phone")]
         public List<Phone> Phone { get; set; }
 
-        [JsonPropertyName("email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
     }
 }

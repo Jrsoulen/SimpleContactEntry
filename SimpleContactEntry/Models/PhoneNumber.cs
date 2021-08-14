@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace SimpleContactEntry
 {
     public class Phone
     {
-        [JsonPropertyName("number")]
+        [JsonProperty("number")]
         public string Number { get; set; }
 
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         [RegularExpression("mobile|home|work", ErrorMessage = "Phone number type must be \"home\", \"work\" or \"mobile\".")]
         public string Type { get; set; }
     }

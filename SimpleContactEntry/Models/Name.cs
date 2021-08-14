@@ -1,17 +1,17 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace SimpleContactEntry
 {
     public class Name
     {
 
-        [JsonPropertyName("first")]
+        [JsonProperty("first")]
         public string First { get; set; }
 
-        [JsonPropertyName("middle")]
+        [JsonProperty("middle")]
         public string Middle { get; set; }
 
-        [JsonPropertyName("last")]
+        [JsonProperty("last")]
         public string Last { get; set; }        
     }
 }
