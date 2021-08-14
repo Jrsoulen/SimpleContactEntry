@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LiteDB;
 
 namespace SimpleContactEntry
@@ -9,7 +10,8 @@ namespace SimpleContactEntry
         {
             using (var db = new LiteDatabase(@".\SimpleContacts.db"))
             {
-                return db.GetCollection<Contact>("contacts").Query().ToList();
+                var allContacts = db.GetCollection<Contact>("contacts").Query().ToList();
+                return allContacts;
             }
         }
         public Contact GetContactById(int id)
