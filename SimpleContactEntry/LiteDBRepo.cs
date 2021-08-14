@@ -10,16 +10,17 @@ namespace SimpleContactEntry
         {
             using (var db = new LiteDatabase(@".\SimpleContacts.db"))
             {
-                var allContacts = db.GetCollection<Contact>("contacts").Query().ToList();
-                return allContacts;
+                return db.GetCollection<Contact>("contacts").Query().ToList();
             }
         }
         public Contact GetContactById(int id)
         {
             using (var db = new LiteDatabase(@".\SimpleContacts.db"))
             {
-                var contacts = db.GetCollection<Contact>("contacts");
-                return contacts.FindById(id);
+                var contact = db.GetCollection<Contact>("contacts").FindById(id);
+                if (contact is null) throw new Exception($"Contact with id {id} not found.");
+                return contact;
+
             }
         }
         public BsonValue CreateNewContact(Contact contact)
@@ -35,14 +36,19 @@ namespace SimpleContactEntry
         {
             using (var db = new LiteDatabase(@".\SimpleContacts.db"))
             {
-                return db.GetCollection<Contact>("contacts").Update(id, contact);
+                var isUpdated = db.GetCollection<Contact>("contacts").Update(id, contact);
+                if (!isUpdated) throw new Exception($"Contact with id {id} not found.");
+                return isUpdated;
+
             }
         }
         public bool DeleteExistingContact(int id)
         {
             using (var db = new LiteDatabase(@".\SimpleContacts.db"))
             {
-                return db.GetCollection<Contact>("contacts").Delete(id);
+                var isDeleted = db.GetCollection<Contact>("contacts").Delete(id);
+                if (!isDeleted) throw new Exception($"Contact with id {id} not found.");
+                return isDeleted;
             }
         }
     }
