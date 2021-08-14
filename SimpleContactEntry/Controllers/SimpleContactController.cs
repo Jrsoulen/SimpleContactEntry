@@ -39,11 +39,11 @@ namespace SimpleContactEntry.Controllers
         [HttpPost]
         [CustomExceptionFilter]
         [Route("contact")]
-        public int CreateNewContact([FromBody]Contact contact)
+        public string CreateNewContact([FromBody]Contact contact)
         {
             var repo = new LiteDBRepo();
             var response = repo.CreateNewContact(contact);
-            return response.AsInt32;
+            return $"Created contact with id: {response}";
         }
         [HttpPut]
         [CustomExceptionFilter]
