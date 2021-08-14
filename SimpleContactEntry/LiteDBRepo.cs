@@ -1,49 +1,47 @@
-﻿using LiteDB;
-using System;
-using System.Linq;
+﻿using System.Collections.Generic;
+using LiteDB;
 
 namespace SimpleContactEntry
 {
     public class LiteDBRepo
     {
-        public void CreateContact(Contact contact)
+        public IEnumerable<Contact> GetAllContacts()
         {
-            // Open database (or create if doesn't exist)
-            using var db = new LiteDatabase(@".\SimpleContacts.db");
-            //// Get a collection (or create, if doesn't exist)
-            var col = db.GetCollection<Contact>("customers");
+            using (var db = new LiteDatabase(@".\SimpleContacts.db"))
+            {
+                return db.GetCollection<Contact>("contacts").Query().ToList();
+            }
+        }
+        public Contact GetContactById(int id)
+        {
+            using (var db = new LiteDatabase(@".\SimpleContacts.db"))
+            {
+                var contacts = db.GetCollection<Contact>("contacts");
+                return contacts.FindById(id);
+            }
+        }
+        public BsonValue CreateNewContact(Contact contact)
+        {
+            using (var db = new LiteDatabase(@".\SimpleContacts.db"))
+            {
+                var contactCollection = db.GetCollection<Contact>("contacts");
+                return contactCollection.Insert(contact);
+            }
+        }
 
-            //// Create your new customer instance
-            //var contact = new Contact
-            //{
-            //    Name = "John Doe",
-            //    Phones = new string[] { "8000-0000", "9000-0000" },
-            //    IsActive = true
-            //};
-
-            //// Insert new customer document (Id will be auto-incremented)
-            col.Insert(contact);
-
-            //// Update a document inside a collection
-            //customer.Name = "Jane Doe";
-
-            //col.Update(customer);
-
-            //// Index document using document Name property
-            //col.EnsureIndex(x => x.Name);
-
-            //// Use LINQ to query documents (filter, sort, transform)
-            var results = col.Query()
-                .Where(x => x.Name.First.StartsWith("H"))
-                .OrderBy(x => x.Name)
-                .Limit(10)
-                .ToList();
-
-            //// Let's create an index in phone numbers (using expression). It's a multikey index
-            //col.EnsureIndex(x => x.Phones);
-
-            //// and now we can query phones
-            //var r = col.FindOne(x => x.Phones.Contains("8888-5555"));
+        public bool UpdateExistingContact(int id, Contact contact)
+        {
+            using (var db = new LiteDatabase(@".\SimpleContacts.db"))
+            {
+                return db.GetCollection<Contact>("contacts").Update(id, contact);
+            }
+        }
+        public bool DeleteExistingContact(int id)
+        {
+            using (var db = new LiteDatabase(@".\SimpleContacts.db"))
+            {
+                return db.GetCollection<Contact>("contacts").Delete(id);
+            }
         }
     }
 }
