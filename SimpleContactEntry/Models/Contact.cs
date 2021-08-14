@@ -5,7 +5,8 @@ namespace SimpleContactEntry
 {
     public class Contact
     {
-
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
         [JsonPropertyName("name")]
         public Name Name { get; set; }
 
