@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using SimpleContactEntry.Models;
 using System.Collections.Generic;
 
 namespace SimpleContactEntry.Controllers
@@ -8,14 +8,6 @@ namespace SimpleContactEntry.Controllers
     [Route("[controller]")]
     public class SimpleContactController : ControllerBase
     {
-
-        private readonly ILogger<SimpleContactController> _logger;
-
-        public SimpleContactController(ILogger<SimpleContactController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpGet]
         [CustomExceptionFilter]
         [Route("contact")]
@@ -36,6 +28,15 @@ namespace SimpleContactEntry.Controllers
             return contact;
         }
 
+        [HttpGet]
+        [CustomExceptionFilter]
+        [Route("contact/call-list")]
+        public IEnumerable<CallContact> GetCallList()
+        {
+            var repo = new LiteDBRepo();
+            return CallListMethods.CreateCallList(repo.GetAllContacts());            
+        }
+
         [HttpPost]
         [CustomExceptionFilter]
         [Route("contact")]
@@ -45,6 +46,7 @@ namespace SimpleContactEntry.Controllers
             var response = repo.CreateNewContact(contact);
             return $"Created contact with id: {response}";
         }
+
         [HttpPut]
         [CustomExceptionFilter]
         [Route("contact/{id}")]
