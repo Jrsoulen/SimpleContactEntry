@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "168fd8c4-6331-4971-8a53-f1887a4e55ed",
+		"name": "SimpleContact",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllContacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/simplecontact/contact",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"simplecontact",
+						"contact"
+					]
+				},
+				"description": "Get All Contacts"
+			},
+			"response": []
+		},
+		{
+			"name": "GetContactById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/simplecontact/contact/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"simplecontact",
+						"contact",
+						"1"
+					]
+				},
+				"description": "Get All Contacts"
+			},
+			"response": []
+		},
+		{
+			"name": "GetCallList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/simplecontact/contact/call-list",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"simplecontact",
+						"contact",
+						"call-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InsertContact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": {\r\n        \"first\": \"Zed\",\r\n        \"middle\": \"Francis\",\r\n        \"last\": \"Zalphabetical\"\r\n    },\r\n    \"address\": {\r\n        \"street\": \"8360 High Autumn Row\",\r\n        \"city\": \"Cannon\",\r\n        \"state\": \"Delaware\",\r\n        \"zip\": \"19797\"\r\n    },\r\n    \"phone\": [\r\n        {\r\n            \"number\": \"302-611-9148\",\r\n            \"type\": \"home\"\r\n        },\r\n        {\r\n            \"number\": \"302-532-9427\",\r\n            \"type\": \"mobile\"\r\n        }\r\n    ],\r\n    \"email\": \"harold.gilkey@yahoo.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44380/simplecontact/contact",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"simplecontact",
+						"contact"
+					]
+				},
+				"description": "Post new contact"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateContact",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": {\r\n        \"first\": \"James\",\r\n        \"middle\": \"Earl\",\r\n        \"last\": \"Jones\"\r\n    },\r\n    \"address\": {\r\n        \"street\": \"8360 High Autumn Row\",\r\n        \"city\": \"Cannon\",\r\n        \"state\": \"Delaware\",\r\n        \"zip\": \"19797\"\r\n    },\r\n    \"phone\": [\r\n        {\r\n            \"number\": \"302-611-9148\",\r\n            \"type\": \"home\"\r\n        },\r\n        {\r\n            \"number\": \"302-532-9427\",\r\n            \"type\": \"mobile\"\r\n        }\r\n    ],\r\n    \"email\": \"harold.gilkey@yahoo.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44380/simplecontact/contact/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"simplecontact",
+						"contact",
+						"1"
+					]
+				},
+				"description": "Update existing contact with ID and valid contact json"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteContactById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44380/simplecontact/contact/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44380",
+					"path": [
+						"simplecontact",
+						"contact",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
